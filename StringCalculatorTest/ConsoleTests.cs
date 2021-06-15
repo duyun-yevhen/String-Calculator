@@ -4,50 +4,24 @@ using System.IO;
 using System.Text;
 using Xunit;
 
-namespace StringCalculator.Test
+namespace ConsoleApp.Test
 {
 
 
 	public class ConsoleTests
 	{
 		[Fact]
-		public void Console_InputTest()
+		public void Console_OutputMessegesTest()
 		{
 			// arrange
-			string expected = "Result: 25" + Environment.NewLine + "Another input please (enter to exit):";
-			string nums = "10, 15\n\r";
-			ConsoleMock console = new ConsoleMock(nums);
+			string[] expected = new string[] { "Enter comma separated numbers (enter to exit):", "Result: 43", "Another input please (enter to exit):" };
+			string[] nums = new string[] { "10, 33", String.Empty};
+			Program.console = new ConsoleMock(nums);
 			// act
-			string actual = console.Main(); 
+			Program.Main(null);
+			var actual = ((ConsoleMock)Program.console).consoleList;
 			// assert
 			Assert.Equal(expected, actual);
-		}
-	}
-
-
-
-
-	class ConsoleMock
-	{
-		
-		StringBuilder stringBuilder;
-		TextWriter stringWriter;
-		TextReader stringReader;
-
-		public ConsoleMock(string numbers)
-		{
-			stringBuilder = new StringBuilder();
-			stringWriter = new StringWriter(stringBuilder);
-			Console.SetOut(stringWriter);
-			stringReader = new StringReader(numbers); 
-			Console.SetIn(stringReader);
-		}
-		
-		public string Main()
-		{
-			Program.Main(null);
-			string[] consoleOut = stringBuilder.ToString().Split(Environment.NewLine);
-			return consoleOut[^3] + Environment.NewLine + consoleOut[^2];
 		}
 	}
 }

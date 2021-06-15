@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace StringCalculator
 {
-	public class Calculator
+	public class StringCalculator
 	{
 		public static int Add(string numbers)
 		{
@@ -40,7 +40,7 @@ namespace StringCalculator
 		{
 			if (numbers.StartsWith("//"))
 				numbers = numbers.Substring(numbers.IndexOf(@"\n")+2);
-			return numbers.Split(delimiters, StringSplitOptions.None);
+			return numbers.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 		}
 
 		static string[] GetDelimiters(string input)
@@ -50,8 +50,8 @@ namespace StringCalculator
 			{
 				int endOfdelimitersLine = input.IndexOf(@"\n");
 				string[] delimiters = input[2..endOfdelimitersLine].Split("][");
-				delimiters[0] = delimiters[0][1..^0];
-				delimiters[^1] = delimiters[^1][0..^1];
+				delimiters[0] = delimiters[0][1..];
+				delimiters[^1] = delimiters[^1][..^1];
 				return delimiters;
 			}
 			else
