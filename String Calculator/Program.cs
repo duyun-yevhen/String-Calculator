@@ -14,7 +14,7 @@ namespace StringCalculator
 					break;
 				else
 				{
-					Console.WriteLine(Calculator.Add(input));
+					Console.WriteLine("Result: " + Calculator.Add(input));
 				}
 			}
 			return;

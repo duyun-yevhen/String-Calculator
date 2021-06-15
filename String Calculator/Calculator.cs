@@ -9,7 +9,7 @@ namespace StringCalculator
 	{
 		public static int Add(string numbers)
 		{
-			string[] _numbers;
+			string[] splitedNumbers;
 			int result = 0;
 
 			if (numbers == null || numbers == string.Empty)
@@ -17,12 +17,12 @@ namespace StringCalculator
 
 			string[] delimiters = GetDelimiters(numbers);
 
-			_numbers = GetNumbers(numbers, delimiters);
+			splitedNumbers = GetNumbers(numbers, delimiters);
 
 			string negatives = String.Empty;
-			for (int i = 0; i < _numbers.Length; i++)
+			for (int i = 0; i < splitedNumbers.Length; i++)
 			{
-				int t = int.Parse(_numbers[i]);
+				int t = int.Parse(splitedNumbers[i]);
 				if (t < 0)
 					negatives += " " + t.ToString();
 				if (t > 1000)
