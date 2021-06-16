@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ConsoleApp
+﻿namespace ConsoleApp
 {
 	public class ConsoleCalculatorProgram 
 	{
@@ -25,11 +21,8 @@ namespace ConsoleApp
 				{
 					return;
 				}
-				else
-				{
-					_console.WriteLine("Result: " + _stringCalculator.Add(input));
-				}
-
+				
+				_console.WriteLine("Result: " + _stringCalculator.Add(input));
 				_console.WriteLine("Another input please (enter to exit):");
 			}
 		}
