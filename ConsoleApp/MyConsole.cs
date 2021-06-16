@@ -2,13 +2,20 @@
 
 namespace ConsoleApp
 {
+
+	public interface IConsole
+	{
+		public string ReadLine();
+		public void WriteLine(string value);
+	}
+
 	public class MyConsole : IConsole
 	{
-		public string ReadLine()
+		public virtual string ReadLine()
 		{
 			return Console.ReadLine();
 		}
-		public void WriteLine(string value)
+		public virtual void WriteLine(string value)
 		{
 			Console.WriteLine(value);
 		}

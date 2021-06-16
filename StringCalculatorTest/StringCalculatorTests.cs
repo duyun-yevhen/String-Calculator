@@ -115,5 +115,4 @@ namespace StringCalculator.Test
 			Assert.Equal(expected, actual);
 		}
 	}
-
 }
