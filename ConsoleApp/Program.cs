@@ -4,9 +4,9 @@ namespace ConsoleApp
 {
 	public class Program
 	{
-		public static void Main(string[] args)
+		public static void Main(params string[] args)
 		{
-			UIConsoleCalculator UICalc = new UIConsoleCalculator(new MyConsole());
+			ConsoleCalculatorProgram UICalc = new ConsoleCalculatorProgram(new MyConsole(), new StringCalculator.StringCalculator());
 			UICalc.DoWork();
 			Console.WriteLine("Program end successfully");
 		}		

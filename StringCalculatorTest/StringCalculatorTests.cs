@@ -12,8 +12,9 @@ namespace StringCalculator.Test
 			// arrange
 			int expected = 0;
 			string num = String.Empty;
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}
@@ -24,8 +25,9 @@ namespace StringCalculator.Test
 			// arrange
 			int expected = 15;
 			string num = "15";
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}
@@ -37,8 +39,9 @@ namespace StringCalculator.Test
 			// arrange
 			string num = "10, 15, 50, 48";
 			int expected = 10 + 15 + 50 + 48;
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}
@@ -49,8 +52,9 @@ namespace StringCalculator.Test
 			// arrange
 			string num = "10\n 15, 50\n 48";
 			int expected = 10 + 15 + 50 + 48;
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}
@@ -61,20 +65,22 @@ namespace StringCalculator.Test
 			// arrange
 			string num = @"//[s]\n10s15s50s48";
 			int expected = 10 + 15 + 50 + 48;
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}
 
 		[Fact]
-		public void Add_NegativesNumbertInInput_ThrowFormatException()
+		public void Add_NegativNumbersInInput_ThrowFormatException()
 		{
 			// arrange
 			string num = "-1,-8,8";
 			string expected = "negatives not allowed: -1 -8";
+			var calculator = new StringCalculator();
 			// act
-			string actual = Assert.Throws<FormatException>(() => StringCalculator.Add(num)).Message;
+			string actual = Assert.Throws<FormatException>(() => calculator.Add(num)).Message;
 			// assert
 			Assert.Equal(expected, actual);
 		}
@@ -85,8 +91,9 @@ namespace StringCalculator.Test
 			// arrange
 			string num = "1001, 5, 10";
 			int expected = 5 + 10;
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}
@@ -97,8 +104,9 @@ namespace StringCalculator.Test
 			// arrange
 			string num = @"//[wse]\n10wse15wse50wse48";
 			int expected = 10 + 15 + 50 + 48;
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}
@@ -109,8 +117,9 @@ namespace StringCalculator.Test
 			// arrange
 			string num = @"//[w]]][`-][-]\n10`-15w]]50-48";
 			int expected = 10 + 15 + 50 + 48;
+			var calculator = new StringCalculator();
 			// act
-			int actual = StringCalculator.Add(num);
+			int actual = calculator.Add(num);
 			// assert
 			Assert.Equal(expected, actual);
 		}

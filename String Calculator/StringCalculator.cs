@@ -7,7 +7,7 @@ namespace StringCalculator
 {
 	public class StringCalculator
 	{
-		public static int Add(string numbers)
+		virtual public int Add(string numbers)
 		{
 			string[] _numbers;
 			int result = 0;
@@ -24,28 +24,35 @@ namespace StringCalculator
 			{
 				int t = int.Parse(_numbers[i]);
 				if (t < 0)
+				{
 					negatives += " " + t.ToString();
+				}
 				if (t > 1000)
+				{
 					continue;
+				}
 
 				result += t;
 			}
-			if (negatives == String.Empty)
-				return result;
-			else
+
+			if (negatives != String.Empty)
+			{
 				throw new FormatException("negatives not allowed:" + negatives);
+			}
+			return result;
 		}
 
-		static string[] GetNumbers(string numbers, string[] delimiters)
+		private string[] GetNumbers(string numbers, string[] delimiters)
 		{
 			if (numbers.StartsWith("//"))
-				numbers = numbers.Substring(numbers.IndexOf(@"\n")+2);
+			{
+				numbers = numbers.Substring(numbers.IndexOf(@"\n") + 2);
+			}
 			return numbers.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 		}
 
-		static string[] GetDelimiters(string input)
+		private string[] GetDelimiters(string input)
 		{
-			
 			if (input.StartsWith("//"))
 			{
 				int endOfdelimitersLine = input.IndexOf(@"\n");
